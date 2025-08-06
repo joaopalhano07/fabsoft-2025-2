@@ -43,3 +43,19 @@ Sistema para gerenciamento completo de quadras esportivas, incluindo controle de
 - Cadastro e gerenciamento dos esportes disponíveis (futebol, vôlei, basquete, etc)
 - Associação dos esportes às quadras correspondentes
 - Definição de regras específicas por esporte (ex: número máximo de jogadores)
+
+
+## Aula 05/08
+
+- JRE - Java Run Time Enviroment
+    - Ambiente mínimo para executar um programa Java
+    - JVM - Java Virtual Machine
+- JDK - Java Develoment Kit
+ - Ambiente de desenvolvimento (javac.exe) compilador
+
+ - COMPILAÇÃO
+  1) Escreve um programa em Java (arquivo.java)
+  2) Compilação aquivo.java -> javac.exe -> bytecode
+  arquivo.class
+ - EXECUÇÃO
+ 3) Passar .class -> java.exe (JVM) -> Ling Máquina
