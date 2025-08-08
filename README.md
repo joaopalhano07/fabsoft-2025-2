@@ -44,6 +44,7 @@ Sistema para gerenciamento completo de quadras esportivas, incluindo controle de
 - Associação dos esportes às quadras correspondentes
 - Definição de regras específicas por esporte (ex: número máximo de jogadores)
 
+---
 
 ## Aula 05/08
 
