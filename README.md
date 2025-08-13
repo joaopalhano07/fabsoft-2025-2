@@ -60,3 +60,8 @@ Sistema para gerenciamento completo de quadras esportivas, incluindo controle de
   arquivo.class
  - EXECUÇÃO
  3) Passar .class -> java.exe (JVM) -> Ling Máquina
+
+---
+## Aula 12/08
+
+Descrição histório de usuário;
