@@ -5,44 +5,42 @@ Matéria: Fabrica de Software
 # Projeto: Esporte na Mão
 
 **Objetivo:**  
-Sistema para gerenciamento completo de quadras esportivas, incluindo controle de agenda, finanças e cadastro de esportes, para administradores e usuários.
+Sistema para gerenciamento completo de comércios esportivos, inclindo controle de reservas e gerenciamento dos recebimentos (finanças).
 
 ---
 
-## 1. Painel Gerencial (Administrador)
+## Requisitos Funcionais:
 
-### Gerenciamento de Usuários
-- Cadastro, edição e exclusão de usuários (clientes e funcionários)
-- Controle de permissões e níveis de acesso
+### RF01 - Gerenciar Usuários
+- User Story: Como usuário Adminsitrador, o sistema deve permitir acesso para gerenciar os usuários "clientes" e "funcionários", para que seja possível realizar a criação destes usuários, editar e excluir suas informações.
+- Funcionalidades: Cadastro, edição e exclusão de usuários (clientes e funcionários).
 
-### Painel e Relatório Financeiro
-- Visualização do fluxo financeiro por período
-- Relatórios de receitas, despesas, lucro e inadimplência
-- Exportação de relatórios (PDF, Excel)
+### RF02 - Gerenciar relatórios financeiros
+- User Story: Em qualquer nível de usuário, o sistema deve habilitar a rotina "Finanças", para que eu consiga verificar as informações financeiros referente a meu comércio no sistema. 
+- Funcionalidades: Visualização do fluxo financeiro por período, Relatórios de receitas, despesas, lucro e inadimplência, Exportação de relatórios (PDF, Excel).
 
-### Configurações Avançadas
-- Gerenciamento dos campos/quadras de cada cliente (nome, tipo, capacidade, valor hora, etc)
-- Definição de horários disponíveis para reserva
-- Configuração de regras de cancelamento e multas
+### RF03 - Gerenciar Reservas
+- User Story: Em qualquer nível de usuário, o sistema deve habilitar a rotina "Reservas", para que seja possível o cadastramento e gerenciamento dos esportes.
+- Funcionalidades: Gerenciamento dos esportes de cada cliente (nome, tipo, capacidade, valor hora, horários disponíveis).
 
----
+### RF04 - Gerenciar cancelamentos e multas
+- User Story: Em qualquer nível de usuário, o sistema deve habilitar a rotina para cadastramento de taxas e multas por cancelamento e pendência de pagamento, para que seja possível calcular a inadimplência.
+- Funcionalidades: Cadastrar, editar e excluir taxas de cancelamento e multas por reservas pendentes.
 
-## 2. App e Site para Clientes (Usuário)
+### RF05 - Acessar sistema por login e senha
+- User Story: Como cliente e funcionário, preciso acessar o sistema utilizando meu CPF e senha repassada pelo administrador.
+- Funcionalidades: CPF deve ser obrigatoriamente o login e a senha deve ser criada pelo usuário ADM no momento da criação do usuário ou edição do mesmo.
 
-- Cadastro e login de usuário
-- Visualização dos esportes disponíveis
-- Consulta e reserva de quadras com calendário integrado
-- Pagamento online e histórico financeiro pessoal
-- Notificações sobre reservas e pagamentos
-- Cancelamento e reagendamento de reservas
+### RF06 - Edição de Senha
+- User Story: Como cliente e funcionário, preciso possuir uma alternativa para troca de senha no momento do login, caso acaba esquecendo dela.
+- Funcionalidades: Na tela de login, o sistema deve possuir um botão "esqueci minha senha", para que o usuário possa refazer sua senha, conforme e-mail enviado para edição.
 
----
+### RF07 - Efetuar reserva
+- User Story: Como cliente, preciso visualizar os esportes disponíveis, suas disponibilidades de horários e valores, assim me permitindo efetivar a reserva.
+- Funcionalidades: Permitir reserva de esportes conforme disponibilidade.
 
-## 3. Cadastro de Esportes
-
-- Cadastro e gerenciamento dos esportes disponíveis (futebol, vôlei, basquete, etc)
-- Associação dos esportes às quadras correspondentes
-- Definição de regras específicas por esporte (ex: número máximo de jogadores)
+### Regras de Negócio:
+- 
 
 ---
 
@@ -64,4 +62,4 @@ Sistema para gerenciamento completo de quadras esportivas, incluindo controle de
 ---
 ## Aula 12/08
 
-Descrição histório de usuário;
+User Stories criadas junto dos requisitos;
