@@ -1,6 +1,6 @@
 # Fábrica de Software/2025
-Nome: João Victor Corrêa Palhano
-Matéria: Fabrica de Software 
+- Nome: João Victor Corrêa Palhano
+- Matéria: Fabrica de Software 
 
 # Projeto: Esporte na Mão
 
