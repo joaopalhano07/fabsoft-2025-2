@@ -131,3 +131,101 @@ Seguir legislações aplicáveis (LGPD, normas contábeis e fiscais).
 ## Aula 12/08
 
 User Stories criadas junto dos requisitos;
+
+```mermaid 
+---
+title: Diagrama de Entidades
+---
+classDiagram
+    Cliente "*" --> "1" Cidade
+    Revisao "*" --> "1" Cliente
+    Revisao "*" --> "1" Carro
+    Revisao "1" --> "*" ItemRevisao
+    ItemRevisao "*" --> "1" Peca
+    namespace entity {
+      class Cliente{
+          -id : long
+          -nome : String
+          -endereco : String
+          -telefone : String
+          -email : String
+          -dataNascimento: Date
+
+          +getId() long
+          +setId(id:long) void
+          +getNome() String
+          +setNome(nome:String) void
+          +getEndereco()  String
+          +setEndereco(endereco:String) void
+          +getTelefone() String
+          +setTelefone(telefone:String) void
+          +getEmail() String
+          +setEmail(email:String) void
+          +getDataNascimento() Date
+          +setDataNascimento(dataNascimento:Date) void
+      }
+      class Cidade{
+          -id : long
+          -nome : String
+
+          +getId() long
+          +setId(id:long) void
+          +getNome() String
+          +setNome(nome:String) void
+      }
+      class Carro{
+          -id : long
+          -marca : String
+          -modelo : String
+          -placa : String
+
+          +getId() long
+          +setId(id:long) void
+          +getMarca() String
+          +setMarca(marca:String) void
+          +getModelo() String
+          +setModelo(modelo:String) void
+          +getPlaca() String
+          +setPlaca(placa:String) void
+
+      }
+      class Revisao {
+          -id : long
+          -dataAgendamento : Date
+          -dataRealizacao : Date
+
+          +getId() long
+          +setId(id:long) void
+          +getNome() String
+          +setNome(nome:String) void
+          +getDataAgendamento() Date
+          +setDataAgendamento(dataAgendamento:Date) void
+          +getDataRealizacao() Date
+          +setDataRealizacao(dataRealizacao:Date) void
+
+      }
+      class ItemRevisao {
+        -id : long
+        -quantidade : int
+
+        +getId() long
+        +setId(id:long) void
+        +getQuantidade() int
+        +setQuantidade(quantidade:int) void
+
+      }
+      class Peca{
+          -id : long
+          -codigo : String
+          -valorUnitario : float
+
+          +getId() long
+          +setId(id:long) void
+          +getCodigo() String
+          +setCodigo(codigo:String) void
+          +getValorUnitario() float
+          +setValorUnitario(valorUnitario:float) void
+
+      }
+    }
+
