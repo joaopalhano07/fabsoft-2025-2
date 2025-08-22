@@ -132,6 +132,8 @@ Seguir legislações aplicáveis (LGPD, normas contábeis e fiscais).
 
 User Stories criadas junto dos requisitos;
 
+## Diagrama de Classes
+
 ```mermaid 
 ---
 title: Diagrama de Entidades
