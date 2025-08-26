@@ -139,16 +139,16 @@ User Stories criadas junto dos requisitos;
 title: Diagrama de Entidades
 ---
 classDiagram
-    Cliente "*" --> "1" Cidade
-    Revisao "*" --> "1" Cliente
-    Revisao "*" --> "1" Carro
-    Revisao "1" --> "*" ItemRevisao
-    ItemRevisao "*" --> "1" Peca
+    Usuario "*" --> "1" Perfil
+    Reserva "*" --> "1" Usuario
+    Reserva "*" --> "1" ModalidadeEsportiva
+    Reserva "1" --> "1" Pagamento
+
     namespace entity {
-      class Cliente{
+      class Usuario{
           -id : long
           -nome : String
-          -endereco : String
+          -cpf : String
           -telefone : String
           -email : String
           -dataNascimento: Date
@@ -157,8 +157,8 @@ classDiagram
           +setId(id:long) void
           +getNome() String
           +setNome(nome:String) void
-          +getEndereco()  String
-          +setEndereco(endereco:String) void
+          +getCpf()  String
+          +setCpf(cpf:String) void
           +getTelefone() String
           +setTelefone(telefone:String) void
           +getEmail() String
@@ -166,7 +166,25 @@ classDiagram
           +getDataNascimento() Date
           +setDataNascimento(dataNascimento:Date) void
       }
-      class Cidade{
+      class Reserva{
+          -id : long
+          -dataHoraInicio : DateTime
+          -dataHoraFim : DateTime
+          -valorTotal : Double
+          -status : String
+
+          +getId() long
+          +setId(id:long) void
+          +getDataHoraInicio() DateTime
+          +setDataHoraInicio(dataHoraInicio:DateTime) void
+          +getDataHoraFim() DateTime
+          +setDataHoraFim(dataHoraFim:DateTime) void
+          +getValorTotal() Double
+          +setValorTotal(valorTotal:Double) void
+          +getStatus() String
+          +setStatus(status:String) void
+      }
+      class Perfil{
           -id : long
           -nome : String
 
@@ -174,24 +192,9 @@ classDiagram
           +setId(id:long) void
           +getNome() String
           +setNome(nome:String) void
-      }
-      class Carro{
-          -id : long
-          -marca : String
-          -modelo : String
-          -placa : String
-
-          +getId() long
-          +setId(id:long) void
-          +getMarca() String
-          +setMarca(marca:String) void
-          +getModelo() String
-          +setModelo(modelo:String) void
-          +getPlaca() String
-          +setPlaca(placa:String) void
 
       }
-      class Revisao {
+      class ModalidadeEsportiva {
           -id : long
           -dataAgendamento : Date
           -dataRealizacao : Date
