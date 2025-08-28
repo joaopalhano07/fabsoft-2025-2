@@ -139,98 +139,127 @@ User Stories criadas junto dos requisitos;
 title: Diagrama de Entidades
 ---
 classDiagram
-    Usuario "*" --> "1" Perfil
-    Reserva "*" --> "1" Usuario
+    Usuario "*" --> "*" Perfil
+    Reserva "*" --> "1" Cliente
     Reserva "*" --> "1" ModalidadeEsportiva
     Reserva "1" --> "1" Pagamento
+    Perfil "*" --> "*" Permissao
 
     namespace entity {
-      class Usuario{
-          -id : long
-          -nome : String
-          -cpf : String
-          -telefone : String
-          -email : String
-          -dataNascimento: Date
-
-          +getId() long
-          +setId(id:long) void
-          +getNome() String
-          +setNome(nome:String) void
-          +getCpf()  String
-          +setCpf(cpf:String) void
-          +getTelefone() String
-          +setTelefone(telefone:String) void
-          +getEmail() String
-          +setEmail(email:String) void
-          +getDataNascimento() Date
-          +setDataNascimento(dataNascimento:Date) void
-      }
-      class Reserva{
-          -id : long
-          -dataHoraInicio : DateTime
-          -dataHoraFim : DateTime
-          -valorTotal : Double
-          -status : String
-
-          +getId() long
-          +setId(id:long) void
-          +getDataHoraInicio() DateTime
-          +setDataHoraInicio(dataHoraInicio:DateTime) void
-          +getDataHoraFim() DateTime
-          +setDataHoraFim(dataHoraFim:DateTime) void
-          +getValorTotal() Double
-          +setValorTotal(valorTotal:Double) void
-          +getStatus() String
-          +setStatus(status:String) void
-      }
-      class Perfil{
-          -id : long
-          -nome : String
-
-          +getId() long
-          +setId(id:long) void
-          +getNome() String
-          +setNome(nome:String) void
-
-      }
-      class ModalidadeEsportiva {
-          -id : long
-          -dataAgendamento : Date
-          -dataRealizacao : Date
-
-          +getId() long
-          +setId(id:long) void
-          +getNome() String
-          +setNome(nome:String) void
-          +getDataAgendamento() Date
-          +setDataAgendamento(dataAgendamento:Date) void
-          +getDataRealizacao() Date
-          +setDataRealizacao(dataRealizacao:Date) void
-
-      }
-      class ItemRevisao {
+      class Cliente{
         -id : long
-        -quantidade : int
+        -nome : String
+        -cpf : String
+        -telefone : String
+        -email : String
+        -dataNascimento: Date
 
         +getId() long
         +setId(id:long) void
-        +getQuantidade() int
-        +setQuantidade(quantidade:int) void
+        +getNome() String
+        +setNome(nome:String) void
+        +getCpf()  String
+        +setCpf(cpf:String) void
+        +getTelefone() String
+        +setTelefone(telefone:String) void
+        +getEmail() String
+        +setEmail(email:String) void
+        +getDataNascimento() Date
+        +setDataNascimento(dataNascimento:Date) void
+      }
+      class Reserva{
+        -id : long
+        -dataHoraInicio : DateTime
+        -dataHoraFim : DateTime
+        -valorTotal : Double
+        -status : StatusReserva
+
+        +getId() long
+        +setId(id:long) void
+        +getDataHoraInicio() DateTime
+        +setDataHoraInicio(dataHoraInicio:DateTime) void
+        +getDataHoraFim() DateTime
+        +setDataHoraFim(dataHoraFim:DateTime) void
+        +getValorTotal() Double
+        +setValorTotal(valorTotal:Double) void
+        +getStatus() StatusReserva
+        +setStatus(status:StatusReserva) void
+      }
+      class Pagamento {
+        -id : long
+        -valor : Double
+        -dataHoraPagamento : DateTime
+        -metodoPagamento : MetodoPagamento
+        -status : StatusPagamento
+        -idTransacaoGateway : String
+
+        +getId() long
+        +setId(id:long) void
+        +getValor(): Double
+        +setValor(valor: Double): void
+        +getDataHoraPagamento(): DateTime
+        +setDataHoraPagamento(data: DateTime): void
+        +getMetodoPagamento(): MetodoPagamento
+        +setMetodoPagamento(metodo: MetodoPagamento): void
+        +getStatus(): StatusPagamento
+        +setStatus(status: StatusPagamento): void
+        +getIdTransacaoGateway(): String
+        +setIdTransacaoGateway(id: String): void
+      }
+      class Perfil{
+        -id : long
+        -nome : String
+
+        +getId() long
+        +setId(id:long) void
+        +getNome() String
+        +setNome(nome:String) void
 
       }
-      class Peca{
-          -id : long
-          -codigo : String
-          -valorUnitario : float
+      class Permissao{
+        -id : long
+        -nome : String
 
-          +getId() long
-          +setId(id:long) void
-          +getCodigo() String
-          +setCodigo(codigo:String) void
-          +getValorUnitario() float
-          +setValorUnitario(valorUnitario:float) void
+        +getId() long
+        +setId(id:long) void
+        +getNome() String
+        +setNome(nome:String) void
+      }
+      class ModalidadeEsportiva {
+        -id : long
+        -nome : String
+        -dataAgendamento : Date
+        -dataRealizacao : Date
 
+        +getId() long
+        +setId(id:long) void
+        +getNome() String
+        +setNome(nome:String) void
+        +getDataAgendamento() Date
+        +setDataAgendamento(dataAgendamento:Date) void
+        +getDataRealizacao() Date
+        +setDataRealizacao(dataRealizacao:Date) void
+      }
+      class Usuario{
+        -id : long
+        -nome : String
+        -cpf : String
+        -telefone : String
+        -email : String
+        -dataNascimento: Date
+
+        +getId() long
+        +setId(id:long) void
+        +getNome() String
+        +setNome(nome:String) void
+        +getCpf()  String
+        +setCpf(cpf:String) void
+        +getTelefone() String
+        +setTelefone(telefone:String) void
+        +getEmail() String
+        +setEmail(email:String) void
+        +getDataNascimento() Date
+        +setDataNascimento(dataNascimento:Date) void
       }
     }
 
