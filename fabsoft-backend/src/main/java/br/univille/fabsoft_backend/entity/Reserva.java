@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
@@ -24,7 +25,15 @@ public class Reserva {
     private Date dataHoraFim;
     private Double valorTotal;
     private StatusReserva Status;
+    @ManyToOne
+    private ModalidadeEsportiva modalidadeEsportiva;
 
+    public ModalidadeEsportiva getModalidadeEsportiva() {
+        return modalidadeEsportiva;
+    }
+    public void setModalidadeEsportiva(ModalidadeEsportiva modalidadeEsportiva) {
+        this.modalidadeEsportiva = modalidadeEsportiva;
+    }
     public StatusReserva getStatus() {
         return Status;
     }

@@ -144,6 +144,7 @@ classDiagram
     Reserva "*" --> "1" ModalidadeEsportiva
     Reserva "1" --> "1" Pagamento
     Perfil "*" --> "*" Permissao
+    Usuario "1" --> "*" ModalidadeEsportiva
 
     namespace entity {
       class Cliente{
