@@ -7,19 +7,23 @@ POST http://localhost:8080/api/v1/clientes
 Content-Type: application/json
 
 {"id":0,
-"nome":" ",
+"nome":"João",
 "email":"giovana.mendes@hotmail.com",
 "telefone":"47 8888-8888",
 "cpf":"222.222.222-22"
 }
 
 ### PUT Clientes
-PUT http://localhost:8080/api/v1/clientes/1
+PUT http://localhost:8080/api/v1/clientes/4
 Content-Type: application/json
 
 {"id":0,
-"nome":" ",
-"email":"giovana.mend",
+"nome":"José",
+"email":"giovana.balal",
 "telefone":"47 8888-8888",
 "cpf":"222.222.222-22"
 }
+
+### DELETE Clientes
+DELETE http://localhost:8080/api/v1/clientes/4
+Content-Type: application/json

@@ -8,4 +8,5 @@ public interface ClienteService {
     List<Cliente> getAll();
     Cliente save(Cliente cliente);
     Cliente update(long id, Cliente cliente) throws Exception ;
+    Cliente delete(long id) throws Exception ;
 }

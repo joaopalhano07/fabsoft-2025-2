@@ -44,4 +44,14 @@ public class ClienteServiceImpl
         return clienteAntigo;
 
     }
+
+    @Override
+    public Cliente delete(long id) throws Exception {
+        var clienteAntigo = repository.getById(id);
+        if(clienteAntigo == null){
+            throw new Exception("Cliente Inexistente");
+    }
+        repository.delete(clienteAntigo);
+        return clienteAntigo;
+    }
 }

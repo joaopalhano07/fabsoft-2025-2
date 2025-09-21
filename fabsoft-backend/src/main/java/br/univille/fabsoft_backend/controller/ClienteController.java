@@ -8,6 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -69,6 +70,20 @@ public class ClienteController {
             cliente = service.update(id, cliente);
         return new ResponseEntity<Cliente>(cliente, 
             HttpStatus.OK);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping ("/{id}")
+    public ResponseEntity<Cliente> 
+        delete(@PathVariable long id) {
+                if(id <= 0){
+            return ResponseEntity.badRequest().build();
+        }
+         try {
+            var cliente = service.delete(id);
+            return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
