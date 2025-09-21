@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.univille.fabsoft_backend.entity.Perfil;
+import br.univille.fabsoft_backend.entity.Cliente;
 import br.univille.fabsoft_backend.service.ClienteService;
 
 
@@ -21,11 +21,11 @@ public class ClienteController {
     private ClienteService service;
 
     @GetMapping
-    public ResponseEntity<List<Perfil>> getClientes(){
+    public ResponseEntity<List<Cliente>> getClientes(){
         
         var listaClientes = service.getAll();
 
-        return new ResponseEntity<List<Perfil>>(listaClientes,
+        return new ResponseEntity<List<Cliente>>(listaClientes,
             HttpStatus.OK);
     }
 }

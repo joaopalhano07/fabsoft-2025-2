@@ -6,12 +6,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Permissao {
-    private long id;
-    private String nome;
-
+public class Quadra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private String nome;
     public long getId() {
         return id;
     }

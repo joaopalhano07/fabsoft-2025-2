@@ -139,12 +139,9 @@ User Stories criadas junto dos requisitos;
 title: Diagrama de Entidades
 ---
 classDiagram
-    Usuario "*" --> "*" Perfil
     Reserva "*" --> "1" Cliente
     Reserva "*" --> "1" ModalidadeEsportiva
-    Reserva "1" --> "1" Pagamento
-    Perfil "*" --> "*" Permissao
-    Usuario "1" --> "*" ModalidadeEsportiva
+    Reserva "*" --> "1" Quadra
 
     namespace entity {
       class Cliente{
@@ -186,81 +183,22 @@ classDiagram
         +getStatus() StatusReserva
         +setStatus(status:StatusReserva) void
       }
-      class Pagamento {
-        -id : long
-        -valor : Double
-        -dataHoraPagamento : DateTime
-        -metodoPagamento : MetodoPagamento
-        -status : StatusPagamento
-        -idTransacaoGateway : String
-
-        +getId() long
-        +setId(id:long) void
-        +getValor(): Double
-        +setValor(valor: Double): void
-        +getDataHoraPagamento(): DateTime
-        +setDataHoraPagamento(data: DateTime): void
-        +getMetodoPagamento(): MetodoPagamento
-        +setMetodoPagamento(metodo: MetodoPagamento): void
-        +getStatus(): StatusPagamento
-        +setStatus(status: StatusPagamento): void
-        +getIdTransacaoGateway(): String
-        +setIdTransacaoGateway(id: String): void
-      }
-      class Perfil{
-        -id : long
-        -nome : String
-
-        +getId() long
-        +setId(id:long) void
-        +getNome() String
-        +setNome(nome:String) void
-
-      }
-      class Permissao{
-        -id : long
-        -nome : String
-
-        +getId() long
-        +setId(id:long) void
-        +getNome() String
-        +setNome(nome:String) void
-      }
       class ModalidadeEsportiva {
         -id : long
         -nome : String
-        -dataAgendamento : Date
-        -dataRealizacao : Date
 
         +getId() long
         +setId(id:long) void
         +getNome() String
         +setNome(nome:String) void
-        +getDataAgendamento() Date
-        +setDataAgendamento(dataAgendamento:Date) void
-        +getDataRealizacao() Date
-        +setDataRealizacao(dataRealizacao:Date) void
       }
-      class Usuario{
+      class Quadra {
         -id : long
         -nome : String
-        -cpf : String
-        -telefone : String
-        -email : String
-        -dataNascimento: Date
 
         +getId() long
         +setId(id:long) void
         +getNome() String
         +setNome(nome:String) void
-        +getCpf()  String
-        +setCpf(cpf:String) void
-        +getTelefone() String
-        +setTelefone(telefone:String) void
-        +getEmail() String
-        +setEmail(email:String) void
-        +getDataNascimento() Date
-        +setDataNascimento(dataNascimento:Date) void
       }
     }
-

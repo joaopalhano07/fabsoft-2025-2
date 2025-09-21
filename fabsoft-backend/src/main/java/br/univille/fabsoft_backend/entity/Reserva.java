@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +26,24 @@ public class Reserva {
     private Date dataHoraFim;
     private Double valorTotal;
     private StatusReserva Status;
-    @ManyToOne
+    @ManyToOne (cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+    private Quadra quadra;
+    public Quadra getQuadra() {
+        return quadra;
+    }
+    public void setQuadra(Quadra quadra) {
+        this.quadra = quadra;
+    }
+    @ManyToOne (cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+    private Cliente cliente;
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    @ManyToOne (cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     private ModalidadeEsportiva modalidadeEsportiva;
 
     public ModalidadeEsportiva getModalidadeEsportiva() {
