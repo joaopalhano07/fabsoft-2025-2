@@ -21,4 +21,27 @@ public class ClienteServiceImpl
         return repository.findAll();
     }
 
+    @Override
+    public Cliente save(Cliente cliente) {
+        return repository.save(cliente);
+    }
+
+    @Override
+    public Cliente update(long id, Cliente cliente) 
+        throws Exception {
+        
+        var clienteAntigo = repository.getById(id);
+        if(clienteAntigo == null){
+            throw new Exception("Cliente Inexistente");
+    }
+
+        clienteAntigo.setNome(cliente.getNome());
+        clienteAntigo.setCpf(cliente.getCpf());
+        clienteAntigo.setDataNascimento(cliente.getDataNascimento());
+        clienteAntigo.setEmail(cliente.getEmail());
+        clienteAntigo.setTelefone(cliente.getTelefone());
+        repository.save(clienteAntigo);
+        return clienteAntigo;
+
+    }
 }
