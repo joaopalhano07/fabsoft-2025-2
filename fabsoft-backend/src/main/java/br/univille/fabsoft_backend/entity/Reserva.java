@@ -28,24 +28,28 @@ public class Reserva {
     private StatusReserva Status;
     @ManyToOne (cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     private Quadra quadra;
+    @ManyToOne (cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+    private ModalidadeEsportiva modalidadeEsportiva;
+    @ManyToOne (cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+    private Cliente cliente;
+
+    public enum StatusReserva{
+        Confirmada,
+        Pendente,
+        Cancelada
+    }
     public Quadra getQuadra() {
         return quadra;
     }
     public void setQuadra(Quadra quadra) {
         this.quadra = quadra;
     }
-    @ManyToOne (cascade = {CascadeType.REFRESH, CascadeType.MERGE})
-    private Cliente cliente;
-
     public Cliente getCliente() {
         return cliente;
     }
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    @ManyToOne (cascade = {CascadeType.REFRESH, CascadeType.MERGE})
-    private ModalidadeEsportiva modalidadeEsportiva;
-
     public ModalidadeEsportiva getModalidadeEsportiva() {
         return modalidadeEsportiva;
     }
@@ -58,12 +62,6 @@ public class Reserva {
     public void setStatus(StatusReserva status) {
         Status = status;
     }
-    public enum StatusReserva{
-        Confirmada,
-        Pendente,
-        Cancelada
-    }
-
     public long getId() {
         return id;
     }
