@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 
 ### PUT Quadras
-PUT http://localhost:8080/api/v1/quadras/1
+PUT http://localhost:8080/api/v1/quadras/2
 Content-Type: application/json
 
 {
@@ -19,5 +19,5 @@ Content-Type: application/json
 }
 
 ### DELETE Quadras
-DELETE http://localhost:8080/api/v1/quadras/1
+DELETE http://localhost:8080/api/v1/quadras/2
 Content-Type: application/json
