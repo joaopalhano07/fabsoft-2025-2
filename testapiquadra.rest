@@ -1,0 +1,23 @@
+### GET Quadras
+GET http://localhost:8080/api/v1/quadras
+Content-Type: application/json
+
+### POST Quadras
+POST http://localhost:8080/api/v1/quadras
+Content-Type: application/json
+
+{
+"nome":"Futebol"
+}
+
+### PUT Quadras
+PUT http://localhost:8080/api/v1/quadras/1
+Content-Type: application/json
+
+{
+"nome":"Volêi"
+}
+
+### DELETE Quadras
+DELETE http://localhost:8080/api/v1/quadras/1
+Content-Type: application/json

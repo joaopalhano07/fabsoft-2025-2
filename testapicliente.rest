@@ -1,0 +1,30 @@
+### GET Clientes
+GET http://localhost:8080/api/v1/clientes
+Content-Type: application/json
+
+### POST Clientes
+POST http://localhost:8080/api/v1/clientes
+Content-Type: application/json
+
+{"id":0,
+"nome":"João",
+"email":"giovana.mendes@hotmail.com",
+"telefone":"47 8888-8888",
+"cpf":"222.222.222-22"
+}
+
+### PUT Clientes
+PUT http://localhost:8080/api/v1/clientes/2
+Content-Type: application/json
+
+{
+"nome":"José",
+"email":"josé.papa@gmail.com",
+"telefone":"47 8888-999",
+"cpf":"222.222.333-33",
+"dataNascimento": "2025-09-23"
+}
+
+### DELETE Clientes
+DELETE http://localhost:8080/api/v1/clientes/2
+Content-Type: application/json

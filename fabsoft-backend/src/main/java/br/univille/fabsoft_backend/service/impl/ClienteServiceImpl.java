@@ -30,11 +30,13 @@ public class ClienteServiceImpl
     public Cliente update(long id, Cliente cliente) 
         throws Exception {
         
-        var clienteAntigo = repository.getById(id);
-        if(clienteAntigo == null){
+        var clienteRetorno = repository.findById(id);
+        if(!clienteRetorno.isPresent()){
             throw new Exception("Cliente Inexistente");
-    }
+        }
 
+        var clienteAntigo = clienteRetorno.get();
+        
         clienteAntigo.setNome(cliente.getNome());
         clienteAntigo.setCpf(cliente.getCpf());
         clienteAntigo.setDataNascimento(cliente.getDataNascimento());

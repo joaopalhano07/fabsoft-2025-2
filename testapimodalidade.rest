@@ -1,0 +1,23 @@
+### GET Modalidade
+GET http://localhost:8080/api/v1/modalidades
+Content-Type: application/json
+
+### POST Modalidade
+POST http://localhost:8080/api/v1/modalidades
+Content-Type: application/json
+
+{
+"nome":"Futebol"
+}
+
+### PUT Modalidade
+PUT http://localhost:8080/api/v1/modalidades/1
+Content-Type: application/json
+
+{
+"nome":"Volêi"
+}
+
+### DELETE Modalidade
+DELETE http://localhost:8080/api/v1/modalidades/1
+Content-Type: application/json

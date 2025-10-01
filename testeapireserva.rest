@@ -1,0 +1,35 @@
+### GET Reservas
+GET http://localhost:8080/api/v1/reservas
+Content-Type: application/json
+
+### POST Reservas
+POST http://localhost:8080/api/v1/reservas
+Content-Type: application/json
+
+{
+"dataHoraInicio":"2024-06-20",
+"dataHoraFim":"2024-06-20",
+"valorTotal":"202.00",
+"cliente": { "id": 1 },
+"modalidadeEsportiva": { "id": 1 },
+"quadra": { "id": 1 },
+"status":1
+}
+
+### PUT Reservas
+PUT http://localhost:8080/api/v1/reservas/2
+Content-Type: application/json
+
+{
+"dataHoraInicio":"2024-06-20",
+"dataHoraFim":"2024-06-20",
+"valorTotal":"197.00",
+"cliente": { "id": 2 },
+"modalidadeEsportiva": { "id": 1 },
+"quadra": { "id": 1 },
+"status":1
+}
+
+### DELETE Reservas
+DELETE http://localhost:8080/api/v1/reservas/2
+Content-Type: application/json

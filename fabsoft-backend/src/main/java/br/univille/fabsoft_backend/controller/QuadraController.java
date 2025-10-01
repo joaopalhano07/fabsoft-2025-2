@@ -17,30 +17,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.univille.fabsoft_backend.entity.Reserva;
-import br.univille.fabsoft_backend.service.ReservaService;
+import br.univille.fabsoft_backend.entity.Quadra;
+import br.univille.fabsoft_backend.service.QuadraService;
 import jakarta.validation.Valid;
 
 
 @RestController
-@RequestMapping("/api/v1/reservas")
-public class ReservaController {
+@RequestMapping("/api/v1/quadras")
+public class QuadraController {
 
     @Autowired
-    private ReservaService service;
+    private QuadraService service;
 
     @GetMapping
-    public ResponseEntity<List<Reserva>> getReservas(){
+    public ResponseEntity<List<Quadra>> getQuadras(){
         
-        var listaReservas = service.getAll();
+        var listaQuadras = service.getAll();
 
-        return new ResponseEntity<List<Reserva>>(listaReservas,
+        return new ResponseEntity<List<Quadra>>(listaQuadras,
             HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Reserva> save(@Valid @RequestBody Reserva reserva, BindingResult result){
-        if(reserva == null){
+    public ResponseEntity<Quadra> save(@Valid @RequestBody Quadra quadra, BindingResult result){
+        if(quadra == null){
             return ResponseEntity.badRequest().build();
         }
         if (result.hasErrors()) {
@@ -49,26 +49,26 @@ public class ReservaController {
                     .map(error -> error.getDefaultMessage())
                     .collect(Collectors.joining(" "));
             headers.add("Erro", errorMessages);
-            return new ResponseEntity<Reserva>(reserva,headers,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<Quadra>(quadra,headers,HttpStatus.BAD_REQUEST);
         }
-        if (reserva.getId() == 0){
-            reserva = service.save(reserva);
-            return new ResponseEntity<Reserva>(reserva, HttpStatus.OK);
+        if (quadra.getId() == 0){
+            quadra = service.save(quadra);
+            return new ResponseEntity<Quadra>(quadra, HttpStatus.OK);
         }
         return ResponseEntity.badRequest().build();
     }
 
     @PutMapping ("/{id}")
-    public ResponseEntity<Reserva> 
-        update(@RequestBody Reserva reserva,
+    public ResponseEntity<Quadra> 
+        update(@RequestBody Quadra quadra,
             @PathVariable long id){
         
-        if(id <= 0 || reserva == null){
+        if(id <= 0 || quadra == null){
             return ResponseEntity.badRequest().build();
         }
         try {
-            reserva = service.update(id, reserva);
-        return new ResponseEntity<Reserva>(reserva, 
+            quadra = service.update(id, quadra);
+        return new ResponseEntity<Quadra>(quadra, 
             HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
@@ -76,14 +76,14 @@ public class ReservaController {
     }
 
     @DeleteMapping ("/{id}")
-    public ResponseEntity<Reserva> 
+    public ResponseEntity<Quadra> 
         delete(@PathVariable long id) {
                 if(id <= 0){
             return ResponseEntity.badRequest().build();
         }
          try {
-            var reserva = service.delete(id);
-            return new ResponseEntity<Reserva>(reserva, HttpStatus.OK);
+            var quadra = service.delete(id);
+            return new ResponseEntity<Quadra>(quadra, HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
