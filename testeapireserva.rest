@@ -10,9 +10,9 @@ Content-Type: application/json
 "dataHoraInicio":"2024-06-20",
 "dataHoraFim":"2024-06-20",
 "valorTotal":"202.00",
-"cliente": { "id": 1 },
+"cliente": { "id": 5 },
 "modalidadeEsportiva": { "id": 1 },
-"quadra": { "id": 1 },
+"quadra": { "id": 2 },
 "status":1
 }
 
@@ -24,9 +24,9 @@ Content-Type: application/json
 "dataHoraInicio":"2024-06-20",
 "dataHoraFim":"2024-06-20",
 "valorTotal":"197.00",
-"cliente": { "id": 2 },
+"cliente": { "id": 6 },
 "modalidadeEsportiva": { "id": 2 },
-"quadra": { "id": 2 },
+"quadra": { "id": 3 },
 "status":1
 }
 
