@@ -9,4 +9,5 @@ public interface ClienteService {
     Cliente save(Cliente cliente);
     Cliente update(long id, Cliente cliente) throws Exception ;
     Cliente delete(long id) throws Exception ;
+    Cliente getById(long id);
 }

@@ -58,6 +58,19 @@ public class ClienteController {
         return ResponseEntity.badRequest().build();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Cliente>
+            getClienteById(@PathVariable long id){
+
+            var cliente = service.getById(id);
+            if(cliente == null)
+                    return ResponseEntity.noContent().build();
+
+            return new 
+                ResponseEntity(cliente, HttpStatus.OK);
+
+    }
+
     @PutMapping ("/{id}")
     public ResponseEntity<Cliente> 
         update(@RequestBody Cliente cliente,
