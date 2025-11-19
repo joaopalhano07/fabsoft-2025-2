@@ -19,9 +19,32 @@
                 <td>{{ umCliente.email }}</td>
                 <td>{{ umCliente.cpf }}</td>
                 <td>{{ umCliente.dataNascimento | date: 'dd/MM/yyyy' }}</td>
-                <td><button (click)="alterar(umCliente)" 
-                    class="btn btn-secondary">Alterar</button></td>
+                <td>
+                    
+                <button (click)="alterar(umCliente)" 
+                    class="btn btn-secondary">Alterar</button>
+                <button (click)="abrirConfirmacao(umCliente)" 
+                    class="btn btn-danger">Excluir</button>
+                
+                </td>
             </tr>
         </tbody>
-    </table>
+    </table> 
 </main>
+
+<div class="modal fade" #myModal tabindex="-1" role="dialog">
+  <div class="modal-dialog" tolde="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Excluir Cliente</h5>
+      </div>
+      <div class="modal-body">
+        Confirma a exclusão do cliente?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="fecharConfirmacao()">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="confirmarExclusao()">Sim</button>
+      </div>
+    </div>
+  </div>
+</div>
