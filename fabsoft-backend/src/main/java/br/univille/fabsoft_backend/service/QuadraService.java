@@ -8,4 +8,5 @@ public interface QuadraService {
     Quadra save(Quadra quadra);
     Quadra update(long id, Quadra quadra) throws Exception ;
     Quadra delete(long id) throws Exception ;
+    Quadra getById(long id);
 }

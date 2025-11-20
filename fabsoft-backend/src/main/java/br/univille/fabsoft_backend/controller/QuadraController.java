@@ -88,4 +88,17 @@ public class QuadraController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Quadra>
+            getQuadraById(@PathVariable long id){
+
+            var quadra = service.getById(id);
+            if(quadra == null)
+                    return ResponseEntity.noContent().build();
+
+            return new 
+                ResponseEntity(quadra, HttpStatus.OK);
+
+    }
 }

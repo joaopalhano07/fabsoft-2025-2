@@ -30,24 +30,34 @@ public class QuadraServiceImpl
     public Quadra update(long id, Quadra quadra) 
         throws Exception {
         
-        var quadraAntiga = repository.getById(id);
-        if(quadraAntiga == null){
+        var quadraAntiga = repository.findById(id);
+        if(!quadraAntiga.isPresent()) {
             throw new Exception("Reserva Inexistente");
     }
-
-        quadraAntiga.setNome(quadra.getNome());
-        repository.save(quadraAntiga);
-        return quadraAntiga;
+        var quadraRetorno = quadraAntiga.get();
+        
+        quadraRetorno.setNome(quadra.getNome());
+        repository.save(quadraRetorno);
+        return quadraRetorno;
 
     }
 
     @Override
     public Quadra delete(long id) throws Exception {
-        var clienteAntigo = repository.getById(id);
-        if(clienteAntigo == null){
-            throw new Exception("Cliente Inexistente");
+        var quadraAntiga = repository.getById(id);
+        if(quadraAntiga == null){
+            throw new Exception("Quadra Inexistente");
     }
-        repository.delete(clienteAntigo);
-        return clienteAntigo;
+        repository.delete(quadraAntiga);
+        return quadraAntiga;
+    }
+
+        @Override
+    public Quadra getById(long id) {
+        var retorno = repository.findById(id);
+        if(retorno.isPresent())
+            return retorno.get();
+
+        return null;
     }
 }
