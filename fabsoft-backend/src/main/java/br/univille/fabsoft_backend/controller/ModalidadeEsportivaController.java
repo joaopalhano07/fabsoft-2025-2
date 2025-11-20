@@ -88,4 +88,16 @@ public class ModalidadeEsportivaController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ModalidadeEsportiva>
+            getModalidadeById(@PathVariable long id){
+
+            var modalidadeEsportiva = service.getById(id);
+            if(modalidadeEsportiva == null)
+                    return ResponseEntity.noContent().build();
+
+            return new 
+                ResponseEntity(modalidadeEsportiva, HttpStatus.OK);
+    }
 }

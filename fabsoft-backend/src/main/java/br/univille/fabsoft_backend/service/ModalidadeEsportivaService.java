@@ -8,4 +8,5 @@ public interface ModalidadeEsportivaService {
     ModalidadeEsportiva save(ModalidadeEsportiva modalidadeEsportiva);
     ModalidadeEsportiva update(long id, ModalidadeEsportiva modalidadeEsportiva) throws Exception ;
     ModalidadeEsportiva delete(long id) throws Exception ;
+    ModalidadeEsportiva getById(long id);
 }

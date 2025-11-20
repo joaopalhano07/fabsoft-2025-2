@@ -30,14 +30,15 @@ public class ModalidadeEsportivaServiceImpl
     public ModalidadeEsportiva update(long id, ModalidadeEsportiva modalidadeEsportiva) 
         throws Exception {
         
-        var modalidadeEsportivaAntiga = repository.getById(id);
-        if(modalidadeEsportivaAntiga == null){
+        var modalidadeEsportivaAntiga = repository.findById(id);
+        if(!modalidadeEsportivaAntiga.isPresent()){
             throw new Exception("modalidade Esportiva Inexistente");
     }
+        var modalidadeEsportivaRetorno = modalidadeEsportivaAntiga.get();
 
-        modalidadeEsportivaAntiga.setNome(modalidadeEsportiva.getNome());
-        repository.save(modalidadeEsportivaAntiga);
-        return modalidadeEsportivaAntiga;
+        modalidadeEsportivaRetorno.setNome(modalidadeEsportiva.getNome());
+        repository.save(modalidadeEsportivaRetorno);
+        return modalidadeEsportivaRetorno;
 
     }
 
@@ -49,5 +50,14 @@ public class ModalidadeEsportivaServiceImpl
     }
         repository.delete(modalidadeEsportivaAntigo);
         return modalidadeEsportivaAntigo;
+    }
+
+    @Override
+    public ModalidadeEsportiva getById(long id) {
+        var retorno = repository.findById(id);
+        if(retorno.isPresent())
+            return retorno.get();
+
+        return null;
     }
 }
