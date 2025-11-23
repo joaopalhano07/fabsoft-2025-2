@@ -1,5 +1,6 @@
 package br.univille.fabsoft_backend.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.univille.fabsoft_backend.entity.Quadra;
 import br.univille.fabsoft_backend.entity.Reserva;
+import br.univille.fabsoft_backend.entity.Reserva.StatusReserva;
 import br.univille.fabsoft_backend.service.ReservaService;
 import jakarta.validation.Valid;
 
@@ -87,5 +90,17 @@ public class ReservaController {
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Reserva>
+            getReservaById(@PathVariable long id){
+
+            var reserva = service.getById(id);
+            if(reserva == null)
+                    return ResponseEntity.noContent().build();
+
+            return new 
+                ResponseEntity(reserva, HttpStatus.OK);
     }
 }

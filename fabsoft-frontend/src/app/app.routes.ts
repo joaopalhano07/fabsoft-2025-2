@@ -5,6 +5,8 @@ import { QuadraComponent } from './quadra/quadra.component';
 import { FormQuadra } from './form-quadra/form-quadra';
 import { modalidadeEsportivaComponent } from './modalidadeEsportiva/modalidadeEsportiva.component';
 import { FormModalidadeEsportiva } from './form-modalidadeEsportiva/form-modalidade';
+import { ReservaComponent } from './reserva/reserva.component';
+import { FormReserva } from './form-reserva/form-reserva';
 
 
 export const routes: Routes = [
@@ -16,5 +18,8 @@ export const routes: Routes = [
     {path: 'quadras/alterar/:id', component: FormQuadra},
     {path: 'modalidades', component: modalidadeEsportivaComponent},
     {path: 'modalidades/novo', component: FormModalidadeEsportiva},
-    {path: 'modalidades/alterar/:id', component: FormModalidadeEsportiva}
+    {path: 'modalidades/alterar/:id', component: FormModalidadeEsportiva},
+    {path: 'reservas', component: ReservaComponent},
+    {path: 'reservas/novo', component: FormReserva},
+    {path: 'reservas/alterar/:id', component: FormReserva}
 ];

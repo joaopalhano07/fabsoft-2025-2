@@ -83,4 +83,13 @@ public class ReservaServiceImpl
         repository.delete(reservaAntiga);
         return reservaAntiga;
     }
+
+    @Override
+    public Reserva getById(long id) {
+        var retorno = repository.findById(id);
+        if(retorno.isPresent())
+            return retorno.get();
+
+        return null;
+    }
 }

@@ -9,4 +9,5 @@ public interface ReservaService {
     Reserva save(Reserva reserva);
     Reserva update(long id, Reserva reserva) throws Exception ;
     Reserva delete(long id) throws Exception ;
+    Reserva getById(long id);
 }

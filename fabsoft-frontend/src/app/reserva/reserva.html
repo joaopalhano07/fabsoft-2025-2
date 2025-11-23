@@ -1,0 +1,53 @@
+<main class="container">
+    <h2>Reservas</h2>
+    <button class="btn btn-primary" (click)="novo()">Novo</button>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Data/Hora de Início</th>
+                <th>Data/Hora de Término</th>
+                <th>Valor Total</th>
+                <th>Status</th>
+                <th>Quadra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let umaReserva of listaReservas">
+                <td>{{ umaReserva.id }}</td>
+                <td>{{ umaReserva.dataHoraInicio | date: 'dd/MM/yyyy HH:mm'}}</td>
+                <td>{{ umaReserva.dataHoraFim | date: 'dd/MM/yyyy HH:mm'}}</td>
+                <td>{{ umaReserva.valorTotal }}</td>
+                <td>{{ umaReserva.status }}</td>
+                <td>{{ retornarNomeQuadra(umaReserva.quadra) }}</td>
+
+                <td>
+                    <button (click)="alterar(umaReserva)" class="btn btn-secondary btn-sm">
+                        Alterar
+                    </button>
+                    <button (click)="abrirConfirmacao(umaReserva)" class="btn btn-danger btn-sm">
+                        Excluir
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table> 
+</main>
+
+<div class="modal fade" #myModal tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document"> <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title">Excluir Reserva</h5>
+      </div>
+      <div class="modal-body">
+        Confirma a exclusão da Reserva?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="fecharConfirmacao()">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="confirmarExclusao()">Sim</button>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,94 @@
+<main class="container">
+    <h2>Cadastro Reserva</h2>
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group">
+                <label for="txtNome">Data/Hora de Início</label>
+                <input type="datetime-local" 
+                [(ngModel)]="reserva.dataHoraInicio"
+                class="form-control"
+                id="txtNome">
+            </div>
+            <div class="form-group">
+                <label for="txtNome">Data/Hora de Término</label>
+                <input type="datetime-local" 
+                [(ngModel)]="reserva.dataHoraFim"
+                class="form-control"
+                id="txtNome">
+            </div>
+            <div class="form-group">
+                <label for="txtNome">Valor Total</label>
+                <input type="number" 
+                [(ngModel)]="reserva.valorTotal"
+                class="form-control"
+                id="txtNome">
+            </div>
+            <div class="form-group">
+                <label for="ddlStatus">Status</label>
+                <select 
+                    [(ngModel)]="reserva.status"
+                    class="form-control"
+                    id="ddlStatus"
+                    name="status">
+                    
+                    <option [ngValue]='0'>Confirmada</option>
+                    <option [ngValue]='1'>Pendente</option>
+                    <option [ngValue]='2'>Cancelada</option>
+                </select>
+            </div>
+            <div class="form-group">
+            <label for="ddlQuadra">Quadra</label>
+            
+            <select 
+                class="form-control" 
+                id="ddlQuadra"
+                name="quadra"
+                [(ngModel)]="reserva.quadra">
+
+                <option [ngValue]="null">Selecione uma quadra...</option>
+
+                <option *ngFor="let item of listaQuadras" [ngValue]="item.id">
+                    {{ item.nome }}
+                </option>
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="ddlModalidade">Modalidade</label>
+            
+            <select 
+                class="form-control" 
+                id="ddlModalidade"
+                name="modalidade"
+                [(ngModel)]="reserva.modalidadeEsportiva">
+
+                <option [ngValue]="null">Selecione uma modalidade...</option>
+
+                <option *ngFor="let item of listaModalidades" [ngValue]="item.id">
+                    {{ item.nome }}
+                </option>
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="ddlModalidade">Cliente</label>
+            
+            <select 
+                class="form-control" 
+                id="ddlCliente"
+                name="cliente"
+                [(ngModel)]="reserva.cliente">
+
+                <option [ngValue]="null">Selecione um cliente...</option>
+
+                <option *ngFor="let item of listaClientes" [ngValue]="item.id">
+                    {{ item.nome }}
+                </option>
+
+            </select>
+        </div>
+        </div>
+        <button (click)="salvar()"
+        class="btn btn-primary">Salvar</button>
+    </div>
+</main>
