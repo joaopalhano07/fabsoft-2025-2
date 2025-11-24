@@ -28,6 +28,11 @@ export class FormReserva implements OnInit {
   listaQuadras: Quadra[] = [];
   listaModalidades: ModalidadeEsportiva [] = [];
   listaClientes: Cliente[] = [];
+  listaStatus = [
+    { id: 'Confirmada', nome: 'Confirmada' },
+    { id: 'Pendente', nome: 'Pendente' },
+    { id: 'Cancelada', nome: 'Cancelada' }
+  ];
 
   constructor(
     private reservaService: ReservaService,
@@ -47,8 +52,20 @@ export class FormReserva implements OnInit {
     const id = this.activeRouter.snapshot.paramMap.get('id');
     if (id) {
       this.reservaService.getReservaById(id).subscribe(res => {
-        console.log('Dados da Reserva carregados:', res);
+        console.log('Dados da Reserva carregados:', res.dataHoraInicio);
         this.reserva = res;
+        if (res.quadra && typeof res.quadra !== 'number') {
+          this.reserva.quadra = res.quadra.id;
+      }
+        if (res.modalidadeEsportiva && typeof res.modalidadeEsportiva !== 'number') {
+          this.reserva.modalidadeEsportiva = res.modalidadeEsportiva.id;
+      }
+
+        if (res.cliente && typeof res.cliente !== 'number') {
+          this.reserva.cliente = res.cliente.id;
+      }
+        this.reserva.dataHoraInicio = this.converterDataParaInput(res.dataHoraInicio);
+        this.reserva.dataHoraFim = this.converterDataParaInput(res.dataHoraFim);
       });
     }
 }
@@ -98,8 +115,6 @@ export class FormReserva implements OnInit {
          reservaParaEnviar.cliente = { id: this.reserva['cliente'] };
     }
 
-    console.log('JSON Final:', reservaParaEnviar);
-
     this.reservaService.saveReservas(reservaParaEnviar).subscribe({
       next: (resultado) => {
         console.log('Sucesso!');
@@ -107,8 +122,23 @@ export class FormReserva implements OnInit {
       },
       error: (erro) => {
         console.error('Erro ao salvar:', erro);
-        alert('Erro 400. Verifique se Cliente e Status também estão corretos.');
+        alert('Erro 400. Verifique.');
       }
     });
   }
+
+  converterDataParaInput(data: any): any {
+  if (!data) return '';
+  if (typeof data === 'number') {
+      const dataObj = new Date(data);
+
+      const ano = dataObj.getUTCFullYear();
+      const mes = (dataObj.getUTCMonth() + 1).toString().padStart(2, '0');
+      const dia = dataObj.getUTCDate().toString().padStart(2, '0');
+      const hora = dataObj.getUTCHours().toString().padStart(2, '0');
+      const min = dataObj.getUTCMinutes().toString().padStart(2, '0');
+      
+      return `${ano}-${mes}-${dia}T${hora}:${min}`;
+  }
+}
 }

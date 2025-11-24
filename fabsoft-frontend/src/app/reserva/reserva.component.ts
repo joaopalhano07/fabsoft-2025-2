@@ -9,6 +9,10 @@ import { ReservaService } from '../service/reserva.service';
 import { Reserva } from '../model/reserva';
 import { QuadraService } from '../service/quadra.service'; 
 import { Quadra } from '../model/quadra'; 
+import { ModalidadeEsportivaService } from '../service/modalidadeEsportiva.service';
+import { ModalidadeEsportiva } from '../model/modalidadeEsportiva';
+import { ClienteService } from '../service/cliente.service';
+import { Cliente } from '../model/cliente';
 
 @Component({
   selector: 'app-reserva',
@@ -16,12 +20,14 @@ import { Quadra } from '../model/quadra';
   imports: [HttpClientModule, CommonModule],
   templateUrl: './reserva.html',
   styleUrl: './reserva.css',
-  providers: [ReservaService, QuadraService, Router] 
+  providers: [ReservaService, QuadraService, Router, ModalidadeEsportivaService, ClienteService] 
 })
 export class ReservaComponent implements OnInit {
 
   listaReservas: Reserva[] = [];
   listaQuadras: Quadra[] = []; 
+  listaModalidades: ModalidadeEsportiva[] = [];
+  listaClientes: Cliente[] = [];
 
   @ViewChild('myModal') modalElement!: ElementRef;
   private modal!: bootstrap.Modal;
@@ -31,6 +37,8 @@ export class ReservaComponent implements OnInit {
   constructor(
     private reservaService: ReservaService,
     private quadraService: QuadraService, 
+    private modalidadeEsportivaService: ModalidadeEsportivaService,
+    private clienteService: ClienteService,
     private router: Router
   ) {}
 
@@ -45,6 +53,14 @@ export class ReservaComponent implements OnInit {
 
     this.quadraService.getQuadras().subscribe(quadras => {
       this.listaQuadras = quadras;
+    });
+
+    this.modalidadeEsportivaService.getModalidades().subscribe(modalidadeEsportiva => {
+      this.listaModalidades = modalidadeEsportiva;
+    });
+
+    this.clienteService.getClientes().subscribe(cliente => {
+      this.listaClientes = cliente;
     });
   }
 
@@ -95,6 +111,30 @@ retornarNomeQuadra(id: any): string {
   const quadraEncontrada = this.listaQuadras.find(q => q.id == idBusca);
 
   return quadraEncontrada ? quadraEncontrada.nome : 'Não encontrada';
+}
+
+retornarNomeModalidade(id: any): string {
+  if (!id) return '-';
+  if (id.nome) return id.nome;
+  if (this.listaModalidades.length === 0) {
+    return '...'; 
+  }
+  const idBusca = id.id || id;
+  const modalidadeEncontrada = this.listaModalidades.find(q => q.id == idBusca);
+
+  return modalidadeEncontrada ? modalidadeEncontrada.nome : 'Não encontrada';
+}
+
+retornarNomeCliente(id: any): string {
+  if (!id) return '-';
+  if (id.nome) return id.nome;
+  if (this.listaClientes.length === 0) {
+    return '...'; 
+  }
+  const idBusca = id.id || id;
+  const clienteEncontrada = this.listaClientes.find(q => q.id == idBusca);
+
+  return clienteEncontrada ? clienteEncontrada.nome : 'Não encontrada';
 }
 
 }

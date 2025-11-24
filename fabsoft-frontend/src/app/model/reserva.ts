@@ -10,7 +10,7 @@ export class Reserva {
     dataHoraFim:Date;
     valorTotal:number;
     status: StatusReserva;
-    quadra: Quadra;
-    modalidadeEsportiva: ModalidadeEsportiva;
-    cliente: Cliente;
+    quadra: Quadra | number;
+    modalidadeEsportiva: ModalidadeEsportiva | number;
+    cliente: Cliente | number;
 }

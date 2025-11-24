@@ -2,38 +2,52 @@
     <h2>Cadastro Reserva</h2>
     <div class="card">
         <div class="card-body">
-            <div class="form-group">
-                <label for="txtNome">Data/Hora de Início</label>
+            <div class="form-group mb-3">
+                <label for="txtInicio">Data/Hora de Início</label>
                 <input type="datetime-local" 
-                [(ngModel)]="reserva.dataHoraInicio"
-                class="form-control"
-                id="txtNome">
-            </div>
-            <div class="form-group">
-                <label for="txtNome">Data/Hora de Término</label>
-                <input type="datetime-local" 
-                [(ngModel)]="reserva.dataHoraFim"
-                class="form-control"
-                id="txtNome">
-            </div>
-            <div class="form-group">
-                <label for="txtNome">Valor Total</label>
-                <input type="number" 
-                [(ngModel)]="reserva.valorTotal"
-                class="form-control"
-                id="txtNome">
-            </div>
-            <div class="form-group">
-                <label for="ddlStatus">Status</label>
-                <select 
-                    [(ngModel)]="reserva.status"
+                    [(ngModel)]="reserva.dataHoraInicio"
                     class="form-control"
-                    id="ddlStatus"
-                    name="status">
+                    id="txtInicio" 
+                    name="dataInicio"> </div>
+
+            <div class="form-group mb-3">
+                <label for="txtFim">Data/Hora de Término</label>
+                <input type="datetime-local" 
+                    [(ngModel)]="reserva.dataHoraFim"
+                    class="form-control"
+                    id="txtFim" 
+                    name="dataFim">
+            </div>
+            <div class="form-group mb-3">
+                <label for="txtValor">Valor Total</label> <div class="input-group">
+                    <span class="input-group-text">R$</span>
                     
-                    <option [ngValue]='0'>Confirmada</option>
-                    <option [ngValue]='1'>Pendente</option>
-                    <option [ngValue]='2'>Cancelada</option>
+                    <input type="number" 
+                        [(ngModel)]="reserva.valorTotal"
+                        class="form-control"
+                        id="txtValor"
+                        name="valorTotal" 
+                        step="0.01" 
+                        min="0.00"
+                        placeholder="0,00">
+                </div>
+                <small class="text-muted">Use ponto ou vírgula para centavos (ex: 150.50)</small>
+            </div>
+            <div class="form-group mb-3">
+                <label for="ddlStatus">Status da Reserva</label>
+                
+                <select 
+                    class="form-control" 
+                    name="status" 
+                    id="ddlStatus"
+                    [(ngModel)]="reserva.status">
+
+                    <option [ngValue]="null">Selecione o status...</option>
+
+                    <option *ngFor="let item of listaStatus" [ngValue]="item.id">
+                        {{ item.nome }}
+                    </option>
+
                 </select>
             </div>
             <div class="form-group">
@@ -45,7 +59,7 @@
                 name="quadra"
                 [(ngModel)]="reserva.quadra">
 
-                <option [ngValue]="null">Selecione uma quadra...</option>
+                <option [ngValue]="null">Nenhum</option>
 
                 <option *ngFor="let item of listaQuadras" [ngValue]="item.id">
                     {{ item.nome }}
@@ -62,7 +76,7 @@
                 name="modalidade"
                 [(ngModel)]="reserva.modalidadeEsportiva">
 
-                <option [ngValue]="null">Selecione uma modalidade...</option>
+                <option [ngValue]="null">Nenhum</option>
 
                 <option *ngFor="let item of listaModalidades" [ngValue]="item.id">
                     {{ item.nome }}
@@ -79,7 +93,7 @@
                 name="cliente"
                 [(ngModel)]="reserva.cliente">
 
-                <option [ngValue]="null">Selecione um cliente...</option>
+                <option [ngValue]="null">Nenhum</option>
 
                 <option *ngFor="let item of listaClientes" [ngValue]="item.id">
                     {{ item.nome }}

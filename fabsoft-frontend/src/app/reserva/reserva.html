@@ -4,6 +4,9 @@
     
     <table class="table">
         <thead>
+            <a href="http://localhost:4200/quadras" target="_blank" class="btn btn-info">Quadras</a>
+            <a href="http://localhost:4200/modalidades" target="_blank" class="btn btn-info">Modalidades</a>
+            <a href="http://localhost:4200/clientes" target="_blank" class="btn btn-info">Clientes</a>
             <tr>
                 <th>ID</th>
                 <th>Data/Hora de Início</th>
@@ -11,16 +14,20 @@
                 <th>Valor Total</th>
                 <th>Status</th>
                 <th>Quadra</th>
+                <th>Modalidade</th>
+                <th>Cliente</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let umaReserva of listaReservas">
                 <td>{{ umaReserva.id }}</td>
-                <td>{{ umaReserva.dataHoraInicio | date: 'dd/MM/yyyy HH:mm'}}</td>
-                <td>{{ umaReserva.dataHoraFim | date: 'dd/MM/yyyy HH:mm'}}</td>
-                <td>{{ umaReserva.valorTotal }}</td>
+                <td>{{ umaReserva.dataHoraInicio | date : 'dd/MM/yyyy HH:mm' : 'UTC' }}</td>
+                <td>{{ umaReserva.dataHoraFim | date: 'dd/MM/yyyy HH:mm' : 'UTC'}}</td>
+                <td>{{ umaReserva.valorTotal | currency:'BRL'}}</td>
                 <td>{{ umaReserva.status }}</td>
                 <td>{{ retornarNomeQuadra(umaReserva.quadra) }}</td>
+                <td>{{ retornarNomeModalidade(umaReserva.modalidadeEsportiva) }}</td>
+                <td>{{ retornarNomeCliente(umaReserva.cliente) }}</td>
 
                 <td>
                     <button (click)="alterar(umaReserva)" class="btn btn-secondary btn-sm">
