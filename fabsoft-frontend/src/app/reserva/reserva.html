@@ -1,60 +1,92 @@
-<main class="container">
-    <h2>Reservas</h2>
-    <button class="btn btn-primary" (click)="novo()">Novo</button>
+<main class="page-container">
+  
+  <header class="page-header">
+    <h1>Gestão de Reservas</h1>
     
-    <table class="table">
+    <nav class="nav-links">
+      <a href="http://localhost:4200/quadras" routerLinkActive="active" class="btn btn-outline-info">Quadras</a>
+      <a href="http://localhost:4200/modalidades" routerLinkActive="active" class="btn btn-outline-info">Modalidades</a>
+      <a href="http://localhost:4200/clientes" routerLinkActive="active" class="btn btn-outline-info">Clientes</a>
+    </nav>
+  </header>
+
+  <div class="content-card">
+    
+    <div class="card-header">
+      <h2>Lista de Reservas</h2>
+      <button class="btn btn-primary" (click)="novo()">
+        + Nova Reserva
+      </button>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-hover">
         <thead>
-            <a href="http://localhost:4200/quadras" target="_blank" class="btn btn-info">Quadras</a>
-            <a href="http://localhost:4200/modalidades" target="_blank" class="btn btn-info">Modalidades</a>
-            <a href="http://localhost:4200/clientes" target="_blank" class="btn btn-info">Clientes</a>
-            <tr>
-                <th>ID</th>
-                <th>Data/Hora de Início</th>
-                <th>Data/Hora de Término</th>
-                <th>Valor Total</th>
-                <th>Status</th>
-                <th>Quadra</th>
-                <th>Modalidade</th>
-                <th>Cliente</th>
-            </tr>
+          <tr>
+            <th>ID</th>
+            <th>Início</th>
+            <th>Término</th>
+            <th>Valor</th>
+            <th>Status</th>
+            <th>Quadra</th>
+            <th>Modalidade</th>
+            <th>Cliente</th>
+            <th class="text-center" style="width: 180px;">Ações</th>
+          </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let umaReserva of listaReservas">
-                <td>{{ umaReserva.id }}</td>
-                <td>{{ umaReserva.dataHoraInicio | date : 'dd/MM/yyyy HH:mm' : 'UTC' }}</td>
-                <td>{{ umaReserva.dataHoraFim | date: 'dd/MM/yyyy HH:mm' : 'UTC'}}</td>
-                <td>{{ umaReserva.valorTotal | currency:'BRL'}}</td>
-                <td>{{ umaReserva.status }}</td>
-                <td>{{ retornarNomeQuadra(umaReserva.quadra) }}</td>
-                <td>{{ retornarNomeModalidade(umaReserva.modalidadeEsportiva) }}</td>
-                <td>{{ retornarNomeCliente(umaReserva.cliente) }}</td>
+          <tr *ngFor="let umaReserva of listaReservas">
+            <td>{{ umaReserva.id }}</td>
+            
+            <td>{{ umaReserva.dataHoraInicio | date : 'dd/MM/yyyy HH:mm' : 'UTC' }}</td>
+            <td>{{ umaReserva.dataHoraFim | date: 'dd/MM/yyyy HH:mm' : 'UTC'}}</td>
+            
+            <td class="text-nowrap">{{ umaReserva.valorTotal | currency:'BRL'}}</td>
+            
+            <td>
+              <span class="badge" 
+                    [class.status-confirmada]="umaReserva.status === 'Confirmada'"
+                    [class.status-pendente]="umaReserva.status === 'Pendente'"
+                    [class.status-cancelada]="umaReserva.status === 'Cancelada'">
+                
+                {{ umaReserva.status }}
+              
+              </span>
+            </td>
+            <td>{{ retornarNomeQuadra(umaReserva.quadra) }}</td>
+            <td>{{ retornarNomeModalidade(umaReserva.modalidadeEsportiva) }}</td>
+            <td>{{ retornarNomeCliente(umaReserva.cliente) }}</td>
 
-                <td>
-                    <button (click)="alterar(umaReserva)" class="btn btn-secondary btn-sm">
-                        Alterar
-                    </button>
-                    <button (click)="abrirConfirmacao(umaReserva)" class="btn btn-danger btn-sm">
-                        Excluir
-                    </button>
-                </td>
-            </tr>
+            <td class="text-end">
+              <button (click)="alterar(umaReserva)" class="btn btn-sm btn-secondary me-2">
+                Alterar
+              </button>
+              <button (click)="abrirConfirmacao(umaReserva)" class="btn btn-sm btn-danger">
+                Excluir
+              </button>
+            </td>
+          </tr>
         </tbody>
-    </table> 
+      </table>
+    </div>
+  </div>
 </main>
 
-<div class="modal fade" #myModal tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document"> <div class="modal-content">
+<div class="modal fade" #myModal tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
       <div class="modal-header">
-      <h5 class="modal-title">Excluir Reserva</h5>
+        <h5 class="modal-title">Excluir Reserva</h5>
+        <button type="button" class="btn-close" (click)="fecharConfirmacao()" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Confirma a exclusão da Reserva?
+        <p>Confirma a exclusão da Reserva?</p>
+        <p class="text-muted small">Esta ação não pode ser desfeita.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="fecharConfirmacao()">Cancelar</button>
-        <button type="button" class="btn btn-primary" (click)="confirmarExclusao()">Sim</button>
+        <button type="button" class="btn btn-primary" (click)="confirmarExclusao()">Sim, excluir</button>
       </div>
     </div>
   </div>
-
 </div>

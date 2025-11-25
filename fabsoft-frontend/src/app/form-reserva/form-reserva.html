@@ -1,108 +1,126 @@
-<main class="container">
-    <h2>Cadastro Reserva</h2>
-    <div class="card">
-        <div class="card-body">
-            <div class="form-group mb-3">
-                <label for="txtInicio">Data/Hora de Início</label>
-                <input type="datetime-local" 
-                    [(ngModel)]="reserva.dataHoraInicio"
-                    class="form-control"
-                    id="txtInicio" 
-                    name="dataInicio"> </div>
+<main class="page-container">
+  
+  <div style="max-width: 800px; margin: 0 auto; width: 100%;">
 
-            <div class="form-group mb-3">
-                <label for="txtFim">Data/Hora de Término</label>
-                <input type="datetime-local" 
-                    [(ngModel)]="reserva.dataHoraFim"
-                    class="form-control"
-                    id="txtFim" 
-                    name="dataFim">
-            </div>
-            <div class="form-group mb-3">
-                <label for="txtValor">Valor Total</label> <div class="input-group">
-                    <span class="input-group-text">R$</span>
-                    
-                    <input type="number" 
-                        [(ngModel)]="reserva.valorTotal"
-                        class="form-control"
-                        id="txtValor"
-                        name="valorTotal" 
-                        step="0.01" 
-                        min="0.00"
-                        placeholder="0,00">
-                </div>
-                <small class="text-muted">Use ponto ou vírgula para centavos (ex: 150.50)</small>
-            </div>
-            <div class="form-group mb-3">
-                <label for="ddlStatus">Status da Reserva</label>
-                
-                <select 
-                    class="form-control" 
-                    name="status" 
-                    id="ddlStatus"
-                    [(ngModel)]="reserva.status">
+    <header class="page-header" style="margin-bottom: 1.5rem;">
+      <h1 style="margin: 0;">Cadastro de Reserva</h1>
+    </header>
 
-                    <option [ngValue]="null">Selecione o status...</option>
+    <div class="content-card">
+      <form>
+        
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="txtInicio" class="form-label fw-bold text-secondary">Data/Hora de Início</label>
+            <input 
+              type="datetime-local" 
+              class="form-control custom-input" 
+              id="txtInicio" 
+              name="dataInicio"
+              [(ngModel)]="reserva.dataHoraInicio">
+          </div>
 
-                    <option *ngFor="let item of listaStatus" [ngValue]="item.id">
-                        {{ item.nome }}
-                    </option>
+          <div class="col-md-6">
+            <label for="txtFim" class="form-label fw-bold text-secondary">Data/Hora de Término</label>
+            <input 
+              type="datetime-local" 
+              class="form-control custom-input" 
+              id="txtFim" 
+              name="dataFim"
+              [(ngModel)]="reserva.dataHoraFim">
+          </div>
+        </div>
 
-                </select>
-            </div>
-            <div class="form-group">
-            <label for="ddlQuadra">Quadra</label>
-            
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="ddlQuadra" class="form-label fw-bold text-secondary">Quadra</label>
             <select 
-                class="form-control" 
-                id="ddlQuadra"
-                name="quadra"
-                [(ngModel)]="reserva.quadra">
-
-                <option [ngValue]="null">Nenhum</option>
-
-                <option *ngFor="let item of listaQuadras" [ngValue]="item.id">
-                    {{ item.nome }}
-                </option>
-
+              class="form-select custom-input" 
+              id="ddlQuadra" 
+              name="quadra"
+              [(ngModel)]="reserva.quadra">
+              
+              <option [ngValue]="null">Selecione uma quadra...</option>
+              <option *ngFor="let item of listaQuadras" [ngValue]="item.id">
+                {{ item.nome }}
+              </option>
             </select>
-        </div>
-        <div class="form-group">
-            <label for="ddlModalidade">Modalidade</label>
-            
+          </div>
+
+          <div class="col-md-6">
+            <label for="ddlModalidade" class="form-label fw-bold text-secondary">Modalidade</label>
             <select 
-                class="form-control" 
-                id="ddlModalidade"
-                name="modalidade"
-                [(ngModel)]="reserva.modalidadeEsportiva">
-
-                <option [ngValue]="null">Nenhum</option>
-
-                <option *ngFor="let item of listaModalidades" [ngValue]="item.id">
-                    {{ item.nome }}
-                </option>
-
+              class="form-select custom-input" 
+              id="ddlModalidade" 
+              name="modalidade"
+              [(ngModel)]="reserva.modalidadeEsportiva">
+              
+              <option [ngValue]="null">Selecione uma modalidade...</option>
+              <option *ngFor="let item of listaModalidades" [ngValue]="item.id">
+                {{ item.nome }}
+              </option>
             </select>
+          </div>
         </div>
-        <div class="form-group">
-            <label for="ddlModalidade">Cliente</label>
+
+        <div class="mb-3">
+          <label for="ddlCliente" class="form-label fw-bold text-secondary">Cliente</label>
+          <select 
+            class="form-select custom-input" 
+            id="ddlCliente" 
+            name="cliente"
+            [(ngModel)]="reserva.cliente">
             
+            <option [ngValue]="null">Selecione o cliente...</option>
+            <option *ngFor="let item of listaClientes" [ngValue]="item.id">
+              {{ item.nome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="txtValor" class="form-label fw-bold text-secondary">Valor Total</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light text-secondary">R$</span>
+              <input 
+                type="number" 
+                class="form-control custom-input" 
+                id="txtValor"
+                name="valorTotal" 
+                step="0.01" 
+                min="0.00"
+                placeholder="0,00"
+                [(ngModel)]="reserva.valorTotal">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="ddlStatus" class="form-label fw-bold text-secondary">Status da Reserva</label>
             <select 
-                class="form-control" 
-                id="ddlCliente"
-                name="cliente"
-                [(ngModel)]="reserva.cliente">
+              class="form-select custom-input" 
+              name="status" 
+              id="ddlStatus"
+              [(ngModel)]="reserva.status">
 
-                <option [ngValue]="null">Nenhum</option>
-
-                <option *ngFor="let item of listaClientes" [ngValue]="item.id">
-                    {{ item.nome }}
-                </option>
-
+              <option [ngValue]="null">Selecione...</option>
+              <option *ngFor="let item of listaStatus" [ngValue]="item.id">
+                 {{ item.nome }}
+              </option>
             </select>
+          </div>
         </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-link text-secondary" (click)="voltar()">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-primary" (click)="salvar()">
+            Salvar Reserva
+          </button>
         </div>
-        <button (click)="salvar()"
-        class="btn btn-primary">Salvar</button>
+
+      </form>
     </div>
+  </div>
 </main>

@@ -1,0 +1,98 @@
+// =========================================
+// 1. Variáveis (Ajuste conforme sua marca)
+// =========================================
+$primary-color: #0d6efd;       // Azul do botão Salvar
+$text-secondary: #6c757d;      // Cinza das labels
+$border-color: #ced4da;        // Borda cinza suave dos inputs
+$input-bg: #ffffff;
+$focus-shadow: rgba(13, 110, 253, 0.15); // Brilho azul ao clicar
+
+// =========================================
+// 2. Estilização do Card e Formulário
+// =========================================
+
+.page-header {
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #333;
+  }
+}
+
+.content-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 2rem; // Espaçamento interno confortável
+  border: 1px solid #e9ecef;
+
+  form {
+    // Estilo das Labels (Rótulos)
+    .form-label {
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+      color: $text-secondary;
+      
+      // Se quiser labels UPPERCASE igual à tabela, descomente abaixo:
+      // text-transform: uppercase;
+      // letter-spacing: 0.5px;
+    }
+
+    // Estilo dos Inputs (Campos de texto)
+    .custom-input {
+      height: 45px; // Input mais alto (padrão moderno)
+      border-radius: 6px;
+      border: 1px solid $border-color;
+      background-color: $input-bg;
+      font-size: 1rem;
+      color: #495057;
+      padding: 0.375rem 1rem;
+      transition: all 0.2s ease-in-out;
+
+      // Estado de Foco (quando clica no campo)
+      &:focus {
+        border-color: $primary-color;
+        background-color: #fff;
+        box-shadow: 0 0 0 4px $focus-shadow; // Glow azul externo
+        outline: none;
+      }
+
+      // Placeholder (texto de exemplo)
+      &::placeholder {
+        color: #adb5bd;
+        font-size: 0.95rem;
+      }
+    }
+
+    // Barra de Botões (Rodapé do form)
+    .form-actions {
+      display: flex;
+      justify-content: flex-end; // Alinha tudo à direita
+      align-items: center;
+      gap: 1rem; // Espaço entre os botões
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #f1f3f5; // Linha divisória sutil
+
+      // Botão Salvar
+      .btn-primary {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        font-weight: 600;
+        // box-shadow: 0 4px 6px rgba(13, 110, 253, 0.2); // Sombra opcional no botão
+      }
+
+      // Botão Cancelar
+      .btn-link {
+        text-decoration: none;
+        color: $text-secondary;
+        font-weight: 500;
+
+        &:hover {
+          color: #333;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

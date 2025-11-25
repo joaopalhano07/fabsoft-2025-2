@@ -1,16 +1,36 @@
-<main class="container">
-    <h2>Cadastro Modalidades</h2>
-    <div class="card">
-        <div class="card-body">
-            <div class="form-group">
-                <label for="txtNome">Nome</label>
-                <input type="text" 
-                [(ngModel)]="modalidadeEsportiva.nome"
-                class="form-control"
-                id="txtNome">
-            </div>
+<main class="page-container">
+  
+  <div style="max-width: 800px; margin: 0 auto; width: 100%;">
+
+    <header class="page-header" style="margin-bottom: 1.5rem;">
+      <h1 style="margin: 0;">Cadastro de Modalidade</h1>
+    </header>
+
+    <div class="content-card">
+      <form>
+        
+        <div class="mb-3">
+          <label for="txtNome" class="form-label fw-bold text-secondary">Nome da Modalidade</label>
+          <input 
+            type="text" 
+            class="form-control custom-input" 
+            id="txtNome" 
+            name="nome"
+            placeholder="Ex: Futsal, Vôlei, Tênis..."
+            [(ngModel)]="modalidadeEsportiva.nome">
         </div>
-        <button (click)="salvar()"
-        class="btn btn-primary">Salvar</button>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-link text-secondary" (click)="voltar()">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-primary" (click)="salvar()">
+            Salvar Dados
+          </button>
+        </div>
+
+      </form>
     </div>
+
+  </div>
 </main>

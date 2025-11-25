@@ -10,7 +10,7 @@ import { QuadraService } from '../service/quadra.service';
   selector: 'app-form-quadra',
   imports: [HttpClientModule, CommonModule, FormsModule],
   templateUrl: './form-quadra.html',
-  styleUrl: './form-quadra.css',
+  styleUrl: './form-quadra.scss',
   providers: [QuadraService, Router]
 })
 export class FormQuadra {
@@ -38,5 +38,8 @@ export class FormQuadra {
       })
   }
 
+  voltar(){
+    this.router.navigate(['quadras'])
+  }
 
 }

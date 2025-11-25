@@ -12,7 +12,7 @@ import * as bootstrap from 'bootstrap';
   selector: 'app-cliente',
   imports: [HttpClientModule, CommonModule],
   templateUrl: './cliente.html',
-  styleUrl: './cliente.css',
+  styleUrl: './cliente.scss',
   providers: [ClienteService, Router]
 })
 export class ClienteComponent {

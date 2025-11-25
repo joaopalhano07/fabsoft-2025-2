@@ -19,7 +19,7 @@ import { Cliente } from '../model/cliente';
   standalone: true, 
   imports: [HttpClientModule, CommonModule, FormsModule],
   templateUrl: './form-reserva.html',
-  styleUrl: './form-reserva.css',
+  styleUrl: './form-reserva.scss',
   providers: [ReservaService, QuadraService, ModalidadeEsportivaService, ClienteService, Router] 
 })
 export class FormReserva implements OnInit { 
@@ -141,4 +141,8 @@ export class FormReserva implements OnInit {
       return `${ano}-${mes}-${dia}T${hora}:${min}`;
   }
 }
+
+  voltar(){
+    this.router.navigate(['reservas'])
+  }
 }

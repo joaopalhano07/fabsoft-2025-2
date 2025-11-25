@@ -12,7 +12,7 @@ import { ModalidadeEsportiva } from '../model/modalidadeEsportiva';
   selector: 'app-modalidadeEsportiva',
   imports: [HttpClientModule, CommonModule],
   templateUrl: './modalidadeEsportiva.html',
-  styleUrl: './modalidadeEsportiva.css',
+  styleUrl: './modalidadeEsportiva.scss',
   providers: [ModalidadeEsportivaService, Router]
 })
 export class modalidadeEsportivaComponent {

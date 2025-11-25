@@ -1,42 +1,66 @@
-<main class="conteiner">
-    <h2>Modalidade Esportiva</h2>
-    <button class="btn btn-primary" (click)="novo()">Novo</button>
+<main class="page-container">
+  
+  <header class="page-header">
+    <h1>Gestão de Modalidades</h1>
     
-    <table class="table">
+    <nav class="nav-links">
+      <a href="http://localhost:4200/quadras" routerLinkActive="active" class="btn btn-outline-info">Quadras</a>
+      <a href="http://localhost:4200/clientes" routerLinkActive="active" class="btn btn-outline-info">Clientes</a>
+      <a href="http://localhost:4200/reservas" routerLinkActive="active" class="btn btn-outline-info">Reservas</a>
+    </nav>
+  </header>
+
+  <div class="content-card">
+    
+    <div class="card-header">
+      <h2>Lista de Modalidades</h2>
+      <button class="btn btn-primary" (click)="novo()">
+        + Nova Modalidade
+      </button>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-hover">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-            </tr>
+          <tr>
+            <th style="width: 10%;">ID</th> <th>Nome</th>
+            <th class="text-center" style="width: 180px;">Ações</th>
+          </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let umaModalidade of listaModalidades">
-                <td>{{ umaModalidade.id }}</td>
-                <td>{{ umaModalidade.nome }}</td>
-                <td>
-                    <button (click)="alterar(umaModalidade)" class="btn btn-secondary">
-                        Alterar
-                    </button>
-                    <button (click)="abrirConfirmacao(umaModalidade)" class="btn btn-danger">
-                        Excluir
-                    </button>
-                </td>
-            </tr>
+          <tr *ngFor="let umaModalidade of listaModalidades">
+            <td>{{ umaModalidade.id }}</td>
+            <td>{{ umaModalidade.nome }}</td>
+            
+            <td class="text-end">
+              <button (click)="alterar(umaModalidade)" class="btn btn-sm btn-secondary me-2">
+                Alterar
+              </button>
+              <button (click)="abrirConfirmacao(umaModalidade)" class="btn btn-sm btn-danger">
+                Excluir
+              </button>
+            </td>
+          </tr>
         </tbody>
-    </table> 
+      </table>
+    </div>
+  </div>
 </main>
 
-<div class="modal fade" #myModal tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document"> <div class="modal-content">
+<div class="modal fade" #myModal tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Excluir Modalidade</h5>
+        <button type="button" class="btn-close" (click)="fecharConfirmacao()" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Confirma a exclusão da Modalidade?
+        <p>Tem certeza que deseja excluir a modalidade?</p>
+        <p class="text-muted small">Essa ação não pode ser desfeita.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="fecharConfirmacao()">Cancelar</button>
-        <button type="button" class="btn btn-primary" (click)="confirmarExclusao()">Sim</button>
+        <button type="button" class="btn btn-primary" (click)="confirmarExclusao()">Sim, excluir</button>
       </div>
     </div>
   </div>

@@ -10,7 +10,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   selector: 'app-form-cliente',
   imports: [HttpClientModule, CommonModule, FormsModule],
   templateUrl: './form-cliente.html',
-  styleUrl: './form-cliente.css',
+  styleUrl: './form-cliente.scss',
   providers: [ClienteService, Router]
 })
 export class FormCliente {
@@ -38,5 +38,8 @@ export class FormCliente {
       })
   }
 
+  voltar(){
+    this.router.navigate(['clientes'])
+  }
 
 }

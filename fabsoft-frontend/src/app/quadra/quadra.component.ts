@@ -12,7 +12,7 @@ import * as bootstrap from 'bootstrap';
   selector: 'app-quadra',
   imports: [HttpClientModule, CommonModule],
   templateUrl: './quadra.html',
-  styleUrl: './quadra.css',
+  styleUrl: './quadra.scss',
   providers: [QuadraService, Router]
 })
 export class QuadraComponent {

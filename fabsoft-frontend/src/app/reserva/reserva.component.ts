@@ -19,7 +19,7 @@ import { Cliente } from '../model/cliente';
   standalone: true,
   imports: [HttpClientModule, CommonModule],
   templateUrl: './reserva.html',
-  styleUrl: './reserva.css',
+  styleUrl: './reserva.scss',
   providers: [ReservaService, QuadraService, Router, ModalidadeEsportivaService, ClienteService] 
 })
 export class ReservaComponent implements OnInit {

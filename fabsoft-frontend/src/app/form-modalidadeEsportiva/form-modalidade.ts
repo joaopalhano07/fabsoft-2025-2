@@ -11,7 +11,7 @@ import { ModalidadeEsportiva } from '../model/modalidadeEsportiva';
   selector: 'app-form-modalidade',
   imports: [HttpClientModule, CommonModule, FormsModule],
   templateUrl: './form-modalidade.html',
-  styleUrl: './form-modalidade.css',
+  styleUrl: './form-modalidade.scss',
   providers: [ModalidadeEsportivaService, Router]
 })
 export class FormModalidadeEsportiva {
@@ -39,5 +39,8 @@ export class FormModalidadeEsportiva {
       })
   }
 
+  voltar(){
+    this.router.navigate(['modalidades'])
+  }
 
 }
